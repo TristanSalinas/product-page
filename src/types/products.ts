@@ -1,4 +1,5 @@
 export interface Product {
+  id: number;
   image: {
     thumbnail: string;
     mobile: string;
