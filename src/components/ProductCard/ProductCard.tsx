@@ -6,34 +6,8 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product }: ProductCardProps) {
-  const { state, dispatch } = useCart();
+  const cart = useCart();
   const [countInCart, setCountInCart] = useState<number>(0);
-
-  const handleAddToCart = () => {
-    setCountInCart(1);
-    dispatch({ type: "ADD_ITEM", payload: product });
-  };
-
-  const handlePlus = () => {
-    dispatch({
-      type: "UPDATE_QUANTITY",
-      payload: { id: product.id, quantity: countInCart + 1 },
-    });
-    setCountInCart((prevCount) => prevCount + 1);
-  };
-
-  const handleMinus = () => {
-    if (countInCart > 1) {
-      setCountInCart((prevCount) => prevCount - 1);
-      dispatch({
-        type: "UPDATE_QUANTITY",
-        payload: { id: product.id, quantity: countInCart - 1 },
-      });
-    } else {
-      setCountInCart(0);
-      dispatch({ type: "REMOVE_ITEM", payload: product });
-    }
-  };
 
   return (
     <article className="product-card">
@@ -41,7 +15,7 @@ export function ProductCard({ product }: ProductCardProps) {
       {countInCart <= 0 ? (
         <button
           className="product-card-btn product-card-btn--add"
-          onClick={handleAddToCart}
+          onClick={useCart().addToCart}
         >
           ADD TO CART
         </button>
