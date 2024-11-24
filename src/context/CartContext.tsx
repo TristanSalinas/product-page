@@ -1,4 +1,10 @@
-import React, { createContext, useState, useContext, ReactNode } from "react";
+import React, {
+  createContext,
+  useState,
+  useContext,
+  ReactNode,
+  useEffect,
+} from "react";
 import { Product } from "../types/products";
 
 export interface CartItem extends Product {
@@ -15,6 +21,9 @@ const CartContext = createContext<
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [cartProducts, setCartProducts] = useState<Array<CartItem>>([]);
+  useEffect(() => {
+    console.log(cartProducts);
+  }, [cartProducts]);
   return (
     <CartContext.Provider value={{ cartProducts, setCartProducts }}>
       {children}
@@ -58,7 +67,7 @@ export function useCart(): UseCartReturn {
     );
     switch (operation) {
       case "ADD":
-        if (productInCart) {
+        if (productInCart !== undefined) {
           setCartProducts(
             cartProducts.map((cartProduct: CartItem) =>
               cartProduct.id === product.id
@@ -78,8 +87,9 @@ export function useCart(): UseCartReturn {
                 ? { ...cartProduct, quantity: cartProduct.quantity - 1 }
                 : cartProduct
             )
-            .filter((cartProduct) => cartProduct.quantity <= 0)
+            .filter((cartProduct) => cartProduct.quantity > 0)
         );
+
         break;
     }
   };
