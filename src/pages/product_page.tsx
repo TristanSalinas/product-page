@@ -3,7 +3,7 @@ import products from "../data.json";
 
 import { CartProvider } from "../context/cart_context";
 import { ProductGrid } from "../components/product_grid/product_grid";
-import { Cart } from "../components/cart/cart";
+import { Cart } from "../components/shopping_cart/shopping_cart";
 
 export function ProductPage() {
   return (
