@@ -1,7 +1,17 @@
+@font-face {
+  font-family: "RedHatText";
+  src: url("/assets/fonts/RedHatText-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900; /* For variable fonts, define a weight range */
+  font-style: normal; /* You can also specify italic if needed */
+}
+
 * {
   box-sizing: border-box;
+  font-family: inherit;
 }
 
 body {
   margin: 0;
+  font-family: "RedHatText";
+  background-color: hsl(13, 31%, 94%);
 }

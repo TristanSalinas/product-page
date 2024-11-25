@@ -1,0 +1,26 @@
+.main {
+  padding: 1rem;
+  width: 100%;
+  max-width: 1300px;
+  margin: auto;
+  margin-bottom: 3rem;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-top: 0;
+}
+
+@media (min-width: 825px) {
+  .main {
+    display: flex;
+    gap: 1.75rem;
+  }
+  .product-grid {
+    flex: 2;
+  }
+
+  .cart {
+    flex: 1;
+  }
+}

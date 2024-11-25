@@ -1,0 +1,14 @@
+.product-grid__content {
+  display: grid;
+  gap: 1.5rem;
+}
+@media screen and (min-width: 600px) {
+  .product-grid__content {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (min-width: 1050px) {
+  .product-grid__content {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}

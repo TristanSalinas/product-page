@@ -46,6 +46,7 @@ interface UseCartReturn {
   updateQuantity: (product: Product, operation: "ADD" | "REMOVE") => void;
   countInCartOf: (product: Product) => number;
   countInCart: number;
+  totalPrice: number;
 }
 
 export function useCart(): UseCartReturn {
@@ -102,6 +103,11 @@ export function useCart(): UseCartReturn {
   };
 
   const countInCart = cartProducts.length;
+
+  const totalPrice = cartProducts.reduce((acc, cartProduct) => {
+    return acc + cartProduct.quantity * cartProduct.price;
+  }, 0);
+
   return {
     cartProducts,
     addToCart,
@@ -109,5 +115,6 @@ export function useCart(): UseCartReturn {
     updateQuantity,
     countInCartOf,
     countInCart,
+    totalPrice,
   };
 }
