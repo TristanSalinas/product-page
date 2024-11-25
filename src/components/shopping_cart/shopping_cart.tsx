@@ -1,5 +1,5 @@
 import { useCart } from "../../hooks/use_cart";
-import "./cart.css";
+import "./shopping_cart.css";
 
 export function Cart() {
   const cart = useCart();
