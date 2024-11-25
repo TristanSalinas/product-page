@@ -2,7 +2,7 @@
   position: relative;
   width: 100%;
   aspect-ratio: 16/10;
-  margin-bottom: 1.75rem;
+  margin-bottom: 2.2rem;
 }
 
 .product-card__img {
@@ -32,10 +32,18 @@
   background-color: white;
   border-radius: 2rem;
   border: 1px solid hsl(14, 86%, 42%);
+  font-weight: 600;
+}
+.product-card-btn--add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
 }
 
 .product-card-btn--plus-minus {
   justify-content: space-between;
+  color: white;
   background-color: hsl(14, 86%, 42%);
 }
 

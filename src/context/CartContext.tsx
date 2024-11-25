@@ -1,10 +1,4 @@
-import React, {
-  createContext,
-  useState,
-  useContext,
-  ReactNode,
-  useEffect,
-} from "react";
+import React, { createContext, useState, useContext, ReactNode } from "react";
 import { Product } from "../types/products";
 
 export interface CartItem extends Product {
@@ -21,9 +15,7 @@ const CartContext = createContext<
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [cartProducts, setCartProducts] = useState<Array<CartItem>>([]);
-  useEffect(() => {
-    console.log(cartProducts);
-  }, [cartProducts]);
+
   return (
     <CartContext.Provider value={{ cartProducts, setCartProducts }}>
       {children}
@@ -102,7 +94,10 @@ export function useCart(): UseCartReturn {
     return cartProduct ? cartProduct.quantity : 0;
   };
 
-  const countInCart = cartProducts.length;
+  const countInCart = cartProducts.reduce(
+    (acc, cartProduct) => acc + cartProduct.quantity,
+    0
+  );
 
   const totalPrice = cartProducts.reduce((acc, cartProduct) => {
     return acc + cartProduct.quantity * cartProduct.price;

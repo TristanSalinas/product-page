@@ -34,7 +34,8 @@ export function ProductCard({ product }: ProductCardProps) {
             className="product-card-btn product-card-btn--add"
             onClick={handleAdd}
           >
-            ADD TO CART
+            <img src="./assets/images/icon-add-to-cart.svg" />
+            <p>Add To Cart</p>
           </button>
         ) : (
           <div className="product-card-btn product-card-btn--plus-minus">
