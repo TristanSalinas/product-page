@@ -1,5 +1,5 @@
 import { Product } from "../../types/products";
-import { useCart } from "../../context/CartContext";
+import { useCart } from "../../context/cart_context";
 import "./ProductCard.css";
 interface ProductCardProps {
   product: Product; // Expecting a Product object

@@ -1,4 +1,4 @@
-import { useCart } from "../../context/CartContext";
+import { useCart } from "../../context/cart_context";
 import "./Cart.css";
 
 export function Cart() {

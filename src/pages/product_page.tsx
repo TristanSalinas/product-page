@@ -1,9 +1,9 @@
 import "./ProductPage.css";
 import products from "../data.json";
 
-import { CartProvider } from "../context/CartContext";
-import { ProductGrid } from "../components/ProductGrid/ProductGrid";
-import { Cart } from "../components/Cart/Cart";
+import { CartProvider } from "../context/cart_context";
+import { ProductGrid } from "../components/product_grid/product_grid";
+import { Cart } from "../components/cart/cart.tsx";
 
 export function ProductPage() {
   return (
