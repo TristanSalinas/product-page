@@ -50,13 +50,13 @@ export function useCart(): UseCartReturn {
 
   const removeFromCart = (product: Product) => {
     setCartProducts(
-      cartProducts.filter((cartProduct) => cartProduct.id !== product.id)
+      cartProducts.filter((cartProduct) => cartProduct.id !== product.id),
     );
   };
 
   const updateQuantity = (product: Product, operation: "ADD" | "REMOVE") => {
     const productInCart = cartProducts.find(
-      (cartProduct) => cartProduct.id === product.id
+      (cartProduct) => cartProduct.id === product.id,
     );
     switch (operation) {
       case "ADD":
@@ -65,8 +65,8 @@ export function useCart(): UseCartReturn {
             cartProducts.map((cartProduct: CartItem) =>
               cartProduct.id === product.id
                 ? { ...cartProduct, quantity: cartProduct.quantity + 1 }
-                : cartProduct
-            )
+                : cartProduct,
+            ),
           );
         } else {
           addToCart(product);
@@ -78,9 +78,9 @@ export function useCart(): UseCartReturn {
             .map((cartProduct: CartItem) =>
               cartProduct.id === product.id
                 ? { ...cartProduct, quantity: cartProduct.quantity - 1 }
-                : cartProduct
+                : cartProduct,
             )
-            .filter((cartProduct) => cartProduct.quantity > 0)
+            .filter((cartProduct) => cartProduct.quantity > 0),
         );
 
         break;
@@ -89,14 +89,14 @@ export function useCart(): UseCartReturn {
 
   const countInCartOf = (product: Product) => {
     const cartProduct = cartProducts.find(
-      (cartProduct) => cartProduct.id === product.id
+      (cartProduct) => cartProduct.id === product.id,
     );
     return cartProduct ? cartProduct.quantity : 0;
   };
 
   const countInCart = cartProducts.reduce(
     (acc, cartProduct) => acc + cartProduct.quantity,
-    0
+    0,
   );
 
   const totalPrice = cartProducts.reduce((acc, cartProduct) => {

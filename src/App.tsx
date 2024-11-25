@@ -1,15 +1,12 @@
-
-import { ProductPage } from './pages/ProductPage'
-import './App.css'
+import { ProductPage } from "./pages/ProductPage";
+import "./App.css";
 
 function App() {
-  
-  
   return (
-   <>
-   <ProductPage/>
-   </>
-  )
+    <>
+      <ProductPage />
+    </>
+  );
 }
 
-export default App
+export default App;
