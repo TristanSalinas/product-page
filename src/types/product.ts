@@ -10,7 +10,3 @@ export interface Product {
   category: string;
   price: number;
 }
-
-export interface ProductList {
-  products: Product[];
-}

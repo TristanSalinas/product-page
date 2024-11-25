@@ -1,49 +1,52 @@
-import { Product } from "../../types/products";
-import { useCart } from "../../context/cart_context";
-import "./ProductCard.css";
+import { Product } from "../../types/product";
+import { useCart } from "../../hooks/use_cart";
+import "./product_card.css";
 interface ProductCardProps {
   product: Product; // Expecting a Product object
 }
 
 export function ProductCard({ product }: ProductCardProps) {
   const cart = useCart();
-
-  const handleAdd = () => {
-    cart.addToCart(product);
-  };
-  const handleMinus = () => {
-    cart.updateQuantity(product, "REMOVE");
-  };
-  const handlePlus = () => {
-    cart.updateQuantity(product, "ADD");
-  };
+  const countInCart = cart.countInCartOf(product);
 
   return (
     <article className="product-card">
       <div className="product-card__top">
         <img
           className={
-            cart.countInCartOf(product) <= 0
+            countInCart <= 0
               ? "product-card__img"
               : "product-card__img product-card__img--active"
           }
           src={product.image.desktop}
         />
-        {cart.countInCartOf(product) <= 0 ? (
+        {countInCart <= 0 ? (
           <button
             className="product-card-btn product-card-btn--add"
-            onClick={handleAdd}
+            onClick={() => {
+              cart.addToCart(product);
+            }}
           >
             <img src="./assets/images/icon-add-to-cart.svg" />
             <p>Add To Cart</p>
           </button>
         ) : (
           <div className="product-card-btn product-card-btn--plus-minus">
-            <button className="product-card-btn__minus" onClick={handleMinus}>
+            <button
+              className="product-card-btn__minus"
+              onClick={() => {
+                cart.updateQuantity(product, "REMOVE");
+              }}
+            >
               <img src="./assets/images/icon-decrement-quantity.svg" />
             </button>
-            <p>{cart.countInCartOf(product)}</p>
-            <button className="product-card-btn__plus" onClick={handlePlus}>
+            <p>{countInCart}</p>
+            <button
+              className="product-card-btn__plus"
+              onClick={() => {
+                cart.updateQuantity(product, "ADD");
+              }}
+            >
               <img src="./assets/images/icon-increment-quantity.svg" />
             </button>
           </div>
